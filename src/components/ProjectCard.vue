@@ -1,4 +1,6 @@
 <script setup>
+import { pick, t } from '../i18n'
+
 defineProps({
   project: { type: Object, required: true },
   highlighted: { type: Boolean, default: false },
@@ -8,12 +10,12 @@ defineProps({
 <template>
   <article :id="'proj-' + project.id" class="card" :class="{ hl: highlighted }">
     <h3>
-      <RouterLink :to="'/projetos/' + project.id">{{ project.title }}</RouterLink>
+      <RouterLink :to="'/projetos/' + project.id">{{ pick(project.title) }}</RouterLink>
     </h3>
-    <p>{{ project.text }}</p>
+    <p>{{ pick(project.text) }}</p>
     <ul class="tags">
-      <li v-for="t in project.tags" :key="t">{{ t }}</li>
+      <li v-for="tag in project.tags" :key="pick(tag)">{{ pick(tag) }}</li>
     </ul>
-    <a v-if="project.link" class="go" :href="project.link" target="_blank" rel="noopener">Ver o projeto</a>
+    <a v-if="project.link" class="go" :href="project.link" target="_blank" rel="noopener">{{ t('project.view') }}</a>
   </article>
 </template>

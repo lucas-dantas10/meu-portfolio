@@ -5,11 +5,12 @@ import { projects as manual } from '../data/projects'
 import { profile } from '../data/profile'
 import { fetchGithubProjects } from '../lib/github'
 import ProjectCard from '../components/ProjectCard.vue'
+import { t } from '../i18n'
 
 const STATUSES = [
-  { key: 'doing', label: 'Em andamento' },
-  { key: 'done', label: 'Concluídos' },
-  { key: 'planned', label: 'Planejados' },
+  { key: 'doing', label: 'tab.doing' },
+  { key: 'done', label: 'tab.done' },
+  { key: 'planned', label: 'tab.planned' },
 ]
 
 const route = useRoute()
@@ -61,10 +62,10 @@ function onKey(e, i) {
 </script>
 
 <template>
-  <h1 class="page">Projetos</h1>
-  <p class="sub">O que estou fazendo agora, o que já terminei e o que ainda vou construir.</p>
+  <h1 class="page">{{ t('projects.title') }}</h1>
+  <p class="sub">{{ t('projects.sub') }}</p>
 
-  <div class="tabs" role="tablist" aria-label="Status dos projetos">
+  <div class="tabs" role="tablist" :aria-label="t('projects.tabs')">
     <button
       v-for="(s, i) in STATUSES"
       :key="s.key"
@@ -78,12 +79,12 @@ function onKey(e, i) {
       @click="active = s.key"
       @keydown="onKey($event, i)"
     >
-      {{ s.label }}<span class="n">{{ count(s.key) }}</span>
+      {{ t(s.label) }}<span class="n">{{ count(s.key) }}</span>
     </button>
   </div>
 
   <div id="panel" class="cards" role="tabpanel" :aria-labelledby="'tab-' + active">
     <ProjectCard v-for="p in visible" :key="p.id" :project="p" :highlighted="highlighted === p.id" />
-    <p v-if="!visible.length" class="sub">Nenhum projeto aqui ainda.</p>
+    <p v-if="!visible.length" class="sub">{{ t('projects.empty') }}</p>
   </div>
 </template>

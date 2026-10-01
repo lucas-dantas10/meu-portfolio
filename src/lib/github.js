@@ -27,7 +27,7 @@ export async function fetchGithubProjects(user) {
           id: r.name.toLowerCase().replace(/[^a-z0-9-]+/g, '-'),
           status: STATUS_BY_TOPIC[statusTopic],
           title: r.name,
-          text: r.description || 'Sem descrição ainda.',
+          text: r.description || { pt: 'Sem descrição ainda.', en: 'No description yet.' },
           tags: topics.filter((t) => !(t in STATUS_BY_TOPIC)),
           link: r.homepage || r.html_url,
         }

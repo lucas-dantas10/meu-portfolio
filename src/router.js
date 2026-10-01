@@ -1,25 +1,25 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import { profile } from './data/profile'
 
 // Endereços: #/  #/projetos  #/projetos/<id>  #/blog  #/blog/<arquivo-do-post>  #/curriculo
+// "titleKey" é a chave do texto do título da aba (veja src/i18n.js).
 const routes = [
   {
     path: '/',
     name: 'inicio',
     component: () => import('./views/HomeView.vue'),
-    meta: { section: 'inicio', title: `${profile.name} · Portfólio` },
+    meta: { section: 'inicio', titleKey: 'title.home' },
   },
   {
     path: '/projetos/:id?',
     name: 'projetos',
     component: () => import('./views/ProjectsView.vue'),
-    meta: { section: 'projetos', title: `Projetos · ${profile.name}` },
+    meta: { section: 'projetos', titleKey: 'title.projects' },
   },
   {
     path: '/blog',
     name: 'blog',
     component: () => import('./views/BlogView.vue'),
-    meta: { section: 'blog', title: `Blog · ${profile.name}` },
+    meta: { section: 'blog', titleKey: 'title.blog' },
   },
   {
     path: '/blog/:slug',
@@ -31,7 +31,7 @@ const routes = [
     path: '/curriculo',
     name: 'curriculo',
     component: () => import('./views/ResumeView.vue'),
-    meta: { section: 'curriculo', title: `Currículo · ${profile.name}` },
+    meta: { section: 'curriculo', titleKey: 'title.resume' },
   },
   { path: '/:pathMatch(.*)*', redirect: '/' },
 ]
@@ -45,10 +45,6 @@ const router = createRouter({
     if (to.name === 'projetos' && to.params.id) return false
     return { top: 0 }
   },
-})
-
-router.afterEach((to) => {
-  if (to.meta.title) document.title = to.meta.title
 })
 
 export default router

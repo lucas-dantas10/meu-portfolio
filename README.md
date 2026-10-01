@@ -35,8 +35,17 @@ tags: IA, Estudos
 Escreva aqui em Markdown: **negrito**, listas, links, código, tabelas e imagens.
 ```
 
+Para ter o post em inglês, crie ao lado um arquivo com `.en` no nome (`meu-primeiro-post.en.md`) com o mesmo `date`. Sem tradução, o post aparece em português com um aviso.
+
 Para esconder um rascunho sem apagar, acrescente a linha `draft: true` no cabeçalho.
 Salvou o arquivo, o post aparece sozinho na lista.
+
+## Português e inglês
+
+O botão PT/EN fica no topo do site, e a escolha fica salva no navegador. Na primeira visita vale o idioma do navegador.
+
+- Textos da interface: `src/i18n.js`.
+- Textos de `profile.js` e `projects.js`: escreva `{ pt: '...', en: '...' }`. Um texto simples vale para os dois idiomas.
 
 ## Projetos que se atualizam sozinhos (GitHub)
 
