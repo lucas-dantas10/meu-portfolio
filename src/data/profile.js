@@ -1,19 +1,18 @@
-// Seus dados pessoais. Troque tudo o que estiver como exemplo.
 export const profile = {
-  name: 'Seu Nome',
-  handle: 'seunome', // aparece no topo: seunome / portfolio
+  name: 'Lucas',
+  handle: 'lucas-dantas', // aparece no topo: seunome / portfolio
 
   // Se preencher, os projetos são lidos do GitHub (veja o README).
-  githubUser: '', // exemplo: 'seu-usuario'
+  githubUser: 'lucas-dantas10', // exemplo: 'seu-usuario'
 
   headline: 'Coisas que construí.',
   intro:
     'Sou desenvolvedor pleno em sistemas governamentais e estou migrando para Software Developer + IA. Aqui ficam meus projetos, o que estou estudando e o que escrevo sobre isso.',
 
   links: [
-    { label: 'GitHub', href: 'https://github.com/seu-usuario' },
-    { label: 'LinkedIn', href: 'https://linkedin.com/in/seu-usuario' },
-    { label: 'E-mail', href: 'mailto:seu@email.com' },
+    { label: 'GitHub', href: 'https://github.com/lucas-dantas10' },
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/lucas-dantas10' },
+    { label: 'E-mail', href: 'mailto:lucas.dantas.nogueira@gmail.com' },
   ],
 
   about: [

@@ -10,8 +10,14 @@ import { profile } from './data/profile'
       <RouterView />
     </main>
     <footer>
-      <p>Feito por {{ profile.name }}.</p>
-      <p>Dica: cada projeto e cada post tem link próprio. Clique no título e compartilhe a URL.</p>
+      <h2>Vamos conversar</h2>
+      <p>Tem uma vaga, um projeto ou uma dúvida sobre algo que escrevi? Fale comigo.</p>
+      <ul class="contact">
+        <li v-for="l in profile.links" :key="l.label">
+          <a :href="l.href" :target="/^https?:/i.test(l.href) ? '_blank' : null" rel="noopener noreferrer">{{ l.label }}</a>
+        </li>
+      </ul>
+      <p class="credit">Feito por {{ profile.name }}.</p>
     </footer>
   </div>
 </template>

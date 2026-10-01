@@ -7,6 +7,7 @@ export const projects = [
     title: 'App de finanças por voz',
     text: 'Registro de transações falando: a API do Gemini interpreta a frase e o sistema lança a despesa na categoria certa.',
     tags: ['Java', 'Spring', 'Gemini API'],
+    link: 'https://finflow.luvcode.tech',
   },
   {
     id: 'este-portfolio',
