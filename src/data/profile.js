@@ -45,7 +45,7 @@ export const profile = {
       title: { pt: 'Bacharelado em Sistemas de Informação', en: "Bachelor's degree in Information Systems" },
       when: { pt: 'Universidade Estácio de Sá', en: 'Universidade Estácio de Sá' },
       text: {
-        pt: 'Base em engenharia de software, banco de dados e redes.',
+        pt: 'Base em engenharia de software, banco de dados, segurança e redes.',
         en: 'Foundations in software engineering, databases and networks.',
       },
     },
