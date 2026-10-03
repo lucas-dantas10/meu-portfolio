@@ -17,4 +17,4 @@ I was losing time switching between the terminal and the browser just to look up
 
 ---
 
-In a future post, I will show how I structured the code of a simple server.
+> In a future post, I will show how I structured the code of a simple server.

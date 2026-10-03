@@ -17,4 +17,4 @@ Eu perdia tempo alternando entre o terminal e o navegador só para consultar um 
 
 ---
 
-Em um próximo post, mostro como estruturei o código de um servidor simples.
+> Em um próximo post, mostro como estruturei o código de um servidor simples.
