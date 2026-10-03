@@ -74,6 +74,6 @@ export const projects = [
       pt: 'Desenhar e documentar a arquitetura de um sistema de médio/grande porte, com diagramas e decisões explicadas em um post.',
       en: 'Design and document the architecture of a medium/large system, with diagrams and decisions explained in a post.',
     },
-    tags: [{ pt: 'Arquitetura', en: 'Architecture' }, { pt: 'Escalabilidade', en: 'Scalability' }],
+    tags: [{ pt: 'Arquitetura', en: 'Architecture' }, { pt: 'Escalabilidade', en: 'Scalability' }, { pt: 'Documentação', en: 'Documentation' }, { pt: 'Trade-offs', en: 'Trade-offs' }],
   },
 ]

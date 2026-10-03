@@ -8,8 +8,8 @@ export const profile = {
 
   headline: { pt: 'Coisas que construí.', en: 'Things I have built.' },
   intro: {
-    pt: 'Sou desenvolvedor pleno em sistemas governamentais e estou migrando para Software Developer + IA. Aqui ficam meus projetos, o que estou estudando e o que escrevo sobre isso.',
-    en: 'I am a mid-level developer building government systems, moving toward Software Developer + AI. This is where my projects, my studies and my writing live.',
+    pt: 'Sou desenvolvedor pleno, com experiência em sistemas governamentais, e estou migrando para Software Developer + IA. Aqui ficam meus projetos, o que estou estudando e o que escrevo sobre isso.',
+    en: "I'm a mid-level developer with experience in government systems, and I'm transitioning into a Software Developer + AI role. Here you'll find my projects, what I'm studying, and what I write about it.",
   },
 
   links: [
@@ -20,11 +20,11 @@ export const profile = {
 
   about: {
     pt: [
-      'Trabalho há mais de quatro anos com sistemas para o setor governamental, onde regra de negócio clara e integração entre serviços fazem a diferença. Sou formado em Sistemas de Informação.',
+      'Trabalho há mais de quatro anos como desenvolvedor de software, com foco em sistemas para o setor governamental, onde regra de negócio clara e integração entre serviços fazem a diferença. Sou formado em Sistemas de Informação.',
       'Agora estudo RAG, System Design e inglês, e transformo cada estudo em projeto e em post neste site.',
     ],
     en: [
-      'I have worked for over four years on systems for the government sector, where clear business rules and integration between services make the difference. I hold a degree in Information Systems.',
+      'I have been working as a software developer for over four years, focusing on government-sector systems, where clear business rules and service integration make all the difference. I hold a degree in Information Systems.',
       'Now I am studying RAG, System Design and English, and I turn each study into a project and a post on this site.',
     ],
   },
@@ -33,8 +33,8 @@ export const profile = {
     {
       title: { pt: 'Desenvolvedor pleno', en: 'Mid-level developer' },
       when: {
-        pt: 'Empresa de médio porte, sistemas governamentais · 4+ anos',
-        en: 'Mid-sized company, government systems · 4+ years',
+        pt: 'Empresa de médio porte, sistemas governamentais · 2+ anos',
+        en: 'Mid-sized company, government systems · 2+ years',
       },
       text: {
         pt: 'Desenvolvimento e manutenção de sistemas web, integrações entre serviços e investigação de bugs em fluxos de negócio.',

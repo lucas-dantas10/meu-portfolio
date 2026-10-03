@@ -73,7 +73,7 @@ const messages = {
     'post.onlyPt': 'Este post ainda não foi traduzido e está disponível apenas em português.',
 
     'resume.title': 'Currículo',
-    'resume.sub': 'Resumo da trajetória. Para o PDF completo, coloque o arquivo na pasta public e linke aqui.',
+    'resume.sub': 'Resumo da minha trajetória profissional.',
 
     'footer.title': 'Vamos conversar',
     'footer.text': 'Tem uma vaga, um projeto ou uma dúvida sobre algo que escrevi? Fale comigo.',
@@ -121,7 +121,7 @@ const messages = {
     'post.onlyPt': 'This post has not been translated yet and is only available in Portuguese.',
 
     'resume.title': 'Resume',
-    'resume.sub': 'A summary of my background. For the full PDF, put the file in the public folder and link it here.',
+    'resume.sub': 'A summary of my professional background.',
 
     'footer.title': "Let's talk",
     'footer.text': 'Have a job, a project or a question about something I wrote? Get in touch.',
