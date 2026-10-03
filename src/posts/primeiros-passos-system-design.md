@@ -1,6 +1,7 @@
 ---
 title: Aprendendo System Design
 date: 2026-09-28
+updated: 2026-10-03
 tags: Architecture
 ---
 System Design ensina a pensar em **como um sistema se comporta sob carga e quando algo falha** *antes* de escrever a primeira linha.

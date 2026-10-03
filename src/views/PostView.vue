@@ -13,7 +13,8 @@ const html = computed(() => (post.value ? renderMarkdown(post.value.body) : ''))
 const meta = computed(() => {
   const p = post.value
   if (!p) return ''
-  return [formatDate(p.date, true), t('post.readTime', { min: p.minutes }), p.tags.join(', ')].filter(Boolean).join(' · ')
+  const updated = p.updated && p.updated !== p.date ? t('post.updated', { date: formatDate(p.updated, true) }) : ''
+  return [formatDate(p.date, true), updated, t('post.readTime', { min: p.minutes }), p.tags.join(', ')].filter(Boolean).join(' · ')
 })
 
 watchEffect(() => {

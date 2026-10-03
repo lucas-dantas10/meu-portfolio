@@ -1,6 +1,7 @@
 ---
 title: Learning System Design
 date: 2026-09-28
+updated: 2026-10-03
 tags: Architecture
 ---
 System Design teaches you to think about **how a system behaves under load and when something fails** *before* writing the first line.

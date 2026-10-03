@@ -34,6 +34,7 @@ for (const [path, raw] of Object.entries(files)) {
     lang,
     title: meta.title || slug,
     date: meta.date || '',
+    updated: meta.updated || '',
     tags: meta.tags ? meta.tags.split(',').map((t) => t.trim()).filter(Boolean) : [],
     draft: String(meta.draft).toLowerCase() === 'true',
     minutes: Math.max(1, Math.round(body.split(/\s+/).filter(Boolean).length / 200)),

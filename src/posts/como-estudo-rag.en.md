@@ -1,6 +1,7 @@
 ---
 title: How I'm Learning RAG from Scratch
 date: 2026-10-01
+updated: 2026-10-02
 tags: AI, RAG
 ---
 When a language model answers a question about something it has never seen, it makes things up. **RAG** (*Retrieval-Augmented Generation*) is the technique that solves this: before asking the model, you **retrieve** the relevant passages from your own documents and hand them over together with the question.

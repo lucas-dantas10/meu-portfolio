@@ -1,6 +1,7 @@
 ---
 title: Como estou estudando RAG do zero
 date: 2026-10-01
+updated: 2026-10-02
 tags: IA, RAG
 ---
 Quando um modelo de linguagem responde sobre algo que ele nunca viu, ele inventa. **RAG** (*Retrieval-Augmented Generation*) é a técnica que resolve isso: antes de perguntar ao modelo, você **busca** os trechos relevantes dos seus próprios documentos e entrega junto com a pergunta.

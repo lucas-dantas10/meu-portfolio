@@ -70,6 +70,7 @@ const messages = {
     'post.back': '‹ Todos os posts',
     'post.notFound': 'Post não encontrado',
     'post.readTime': '{min} min de leitura',
+    'post.updated': 'atualizado em {date}',
     'post.onlyPt': 'Este post ainda não foi traduzido e está disponível apenas em português.',
 
     'resume.title': 'Currículo',
@@ -118,6 +119,7 @@ const messages = {
     'post.back': '‹ All posts',
     'post.notFound': 'Post not found',
     'post.readTime': '{min} min read',
+    'post.updated': 'updated {date}',
     'post.onlyPt': 'This post has not been translated yet and is only available in Portuguese.',
 
     'resume.title': 'Resume',
