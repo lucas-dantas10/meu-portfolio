@@ -1,5 +1,8 @@
 // Textos com { pt, en } mudam com o idioma; textos simples valem para os dois.
 export const profile = {
+  // Endereço público do site (SEO: canonical, Open Graph). Ajuste se usar domínio próprio.
+  siteUrl: 'https://lucasdantas.vercel.app/',
+
   name: 'Lucas',
   handle: 'lucas-dantas', // aparece no topo: seunome / portfolio
 

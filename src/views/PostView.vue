@@ -6,6 +6,7 @@ import { renderMarkdown } from '../lib/markdown'
 import { formatDate } from '../lib/format'
 import { profile } from '../data/profile'
 import { locale, t } from '../i18n'
+import { setSeo } from '../composables/useSeo'
 
 const route = useRoute()
 const post = computed(() => getPosts(locale.value).find((p) => p.slug === route.params.slug))
@@ -18,7 +19,13 @@ const meta = computed(() => {
 })
 
 watchEffect(() => {
-  document.title = post.value ? `${post.value.title} · ${profile.name}` : `${t('post.notFound')} · ${profile.name}`
+  const p = post.value
+  setSeo({
+    title: p ? `${p.title} · ${profile.name}` : `${t('post.notFound')} · ${profile.name}`,
+    description: p ? p.body.replace(/[#*`>_[\]]/g, '').replace(/\s+/g, ' ').trim().slice(0, 155) : undefined,
+    path: route.fullPath,
+    type: p ? 'article' : 'website',
+  })
 })
 </script>
 

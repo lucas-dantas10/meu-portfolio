@@ -3,14 +3,15 @@ import { watchEffect } from 'vue'
 import { useRoute } from 'vue-router'
 import SiteHeader from './components/SiteHeader.vue'
 import { profile } from './data/profile'
-import { pick, t } from './i18n'
+import { pick, t, locale } from './i18n'
+import { setSeo } from './composables/useSeo'
 
 const route = useRoute()
 
 // O título da aba acompanha a página e o idioma (a página de um post define o próprio título).
 watchEffect(() => {
   const key = route.meta.titleKey
-  if (key) document.title = `${t(key)} · ${profile.name}`
+  if (key) setSeo({ title: `${t(key)} · ${profile.name}`, description: pick(profile.intro), path: route.fullPath, lang: locale.value })
 })
 </script>
 
