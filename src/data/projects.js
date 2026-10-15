@@ -22,6 +22,7 @@ export const projects = [
       en: 'An assistant that answers questions about my own documentation, citing which passage each answer came from.',
     },
     tags: ['RAG', 'Chunks', 'Embeddings', 'Gemini API', 'Python'],
+    link: 'https://github.com/lucas-dantas10/rag-study',
   },
   {
     id: 'este-portfolio',
