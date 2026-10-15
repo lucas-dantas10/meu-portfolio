@@ -58,7 +58,7 @@ Se a resposta do LLM sai errada, a causa pode ser o *retriever* ou o próprio mo
 
 ### 3. Como montar um caso de teste
 
-- Cada caso tem uma pergunta, um tipo e um `kw`, um trecho que só existe no chunk correto.
+- Cada caso tem uma pergunta, um tipo e um `kw` (abreviação de *keyword*, palavra-chave): um trecho que só existe no chunk correto.
 - Os tipos (direta, parafraseada, termo exato, parcial, armadilha) testam comportamentos diferentes do retriever.
 - Um caso só é válido se o `kw` realmente existe no corpus. Por isso conferi o meu no `VOICE_TRANSACTION_FLOW.md`.
 - Casos "sem resposta" ficam de fora dessa métrica.

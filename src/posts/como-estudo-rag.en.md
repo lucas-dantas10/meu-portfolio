@@ -58,7 +58,7 @@ When the LLM's answer comes out wrong, the cause can be the *retriever* or the m
 
 ### 3. How to build a test case
 
-- Each case has a question, a type and a `kw`, a snippet that only exists in the correct chunk.
+- Each case has a question, a type and a `kw` (short for *keyword*): a snippet that only exists in the correct chunk.
 - The types (direct, paraphrased, exact term, partial, trap) test different retriever behaviors.
 - A case is only valid if the `kw` really exists in the corpus. That's why I checked mine against `VOICE_TRANSACTION_FLOW.md`.
 - "No answer" cases are left out of this metric.
