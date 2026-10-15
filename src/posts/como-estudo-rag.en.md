@@ -1,7 +1,7 @@
 ---
 title: How I'm Learning RAG from Scratch
 date: 2026-10-01
-updated: 2026-10-02
+updated: 2026-10-14
 tags: AI, RAG
 ---
 When a language model answers a question about something it has never seen, it makes things up. **RAG** (*Retrieval-Augmented Generation*) is the technique that solves this: before asking the model, you **retrieve** the relevant passages from your own documents and hand them over together with the question.
@@ -42,4 +42,37 @@ This behavior is known as the "I don't know" test: it checks whether the assista
 
 **Result:** the normal test (questions whose answers exist in the documents) worked well, and the assistant returned the correct answers.
 
-> Next step: run the "I don't know" test with out-of-context questions and record the errors here.
+## Update: measuring retrieval (Oct 14)
+
+Today I built the retrieval step of my RAG and learned how to **measure it**, instead of judging it only by how the answers feel.
+
+### 1. Evaluate retrieval separately from generation
+
+When the LLM's answer comes out wrong, the cause can be the *retriever* or the model itself. Testing retrieval alone, without calling Gemini, isolates the first cause. It's also fast, free and deterministic.
+
+### 2. Metrics
+
+- **hit@K** tells you whether the right chunk is among the top K.
+- **MRR@K** tells you how close to the top it is.
+- Together they show more than either one alone. My 100% hit@3 was hiding an MRR of 0.77, meaning not everything came back in 1st place.
+
+### 3. How to build a test case
+
+- Each case has a question, a type and a `kw` (short for *keyword*): a snippet that only exists in the correct chunk.
+- The types (direct, paraphrased, exact term, partial, trap) test different retriever behaviors.
+- A case is only valid if the `kw` really exists in the corpus. That's why I checked mine against `VOICE_TRANSACTION_FLOW.md`.
+- "No answer" cases are left out of this metric.
+
+### 4. A real failure and what it teaches
+
+The case about the microphone button's file failed. The chunk with the answer was a Markdown table row: short, full of symbols, with a weak embedding. It lost to prose chunks that talk about voice in broader terms.
+
+The lesson is that search quality depends heavily on how you do the chunking, and semantic similarity isn't magic for structured data.
+
+## Next steps
+
+- Improve chunking for tables, or include the section title in every chunk.
+- Try a reranker or hybrid search (vector plus keyword).
+- Align the evaluation K (3) with the `n_results` in `ask.py` (4).
+- Add more test cases, including questions with no answer in the documents.
+- Run the "I don't know" test with out-of-context questions and record the errors here.
