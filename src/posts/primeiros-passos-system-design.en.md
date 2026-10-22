@@ -1,7 +1,7 @@
 ---
 title: Learning System Design
 date: 2026-09-28
-updated: 2026-10-03
+updated: 2026-10-21
 tags: Architecture
 ---
 System Design teaches you to think about **how a system behaves under load and when something fails** *before* writing the first line.
@@ -45,4 +45,43 @@ A cache keeps frequently used data in a fast store, which reduces the load on th
 
 In distributed systems, the cache usually becomes a shared service (like Redis) instead of living inside each instance. That brings new concerns: how to invalidate data, how long it should live (TTL), and how to keep every node seeing consistent values.
 
-> I'm still at the beginning: so far I've covered load balancers and caching, and I'll update this post as I study more.
+### Sharding
+
+Sharding means splitting a large database into smaller pieces, called **shards**, and spreading them across different servers. Each shard holds only a subset of the data and has the same schema. It is a form of **horizontal scaling**: instead of buying an ever-bigger server (vertical scaling), you add more servers. The central decision is the **shard key**, the field that determines which shard each record lands in.
+
+| Strategy | How it works | Pros | Cons |
+| --- | --- | --- | --- |
+| Range-based | Splits by key ranges (e.g. IDs 1–1M on shard A, 1M–2M on shard B) | Easy to understand and great for range queries | Risk of hotspots (e.g. increasing keys concentrate writes on the last shard) |
+| Hash-based | Hashes the key and uses the result to pick the shard | Even distribution, which avoids hotspots | Range queries have to hit every shard, and adding shards means moving data around (mitigated by consistent hashing) |
+| Directory-based | A lookup table stores which shard holds each key | Maximum flexibility to move data and rebalance | The directory becomes a single point of failure and a bottleneck, plus one more piece to maintain |
+| Geo-based | Splits by user region (e.g. Brazil, Europe) | Low latency and makes data-residency requirements easier | Uneven distribution across regions and complexity for users who travel or connect from elsewhere |
+
+**When to use sharding:**
+
+- The data volume or write load has outgrown what a single server can handle, even after scaling vertically.
+- Read replicas and caching no longer help, because the bottleneck is writes or dataset size.
+- Data needs to be isolated by region or by customer (tenant), for latency or regulatory reasons.
+
+**When to avoid it:** sharding is expensive in complexity, so it is worth trying indexes, caching, read replicas, and partitioning inside a single database first.
+
+**Trade-offs:**
+
+- **Cross-shard joins and transactions** become expensive or impossible, and often call for eventual consistency or patterns like saga.
+- **Resharding** (changing the number of shards or the key) is painful and risky in production.
+- **Hotspots:** a bad shard key piles the load onto a few shards and cancels the benefit.
+- **Operational complexity:** more servers to monitor, back up, and migrate, and the application (or a router) has to know where each piece of data lives.
+- Choosing the shard key well is hard to undo: it should have high cardinality, spread the load evenly, and appear in the most common queries.
+
+**Common problems and how to solve them:**
+
+| Problem | What happens | How to solve it |
+| --- | --- | --- |
+| Celebrity problem (hot key) | A very popular key (e.g. a profile with millions of followers) concentrates reads and writes on a single shard, which gets overloaded while the others sit idle | Give hot keys dedicated shards, split the key into sub-keys (e.g. `celebrity_1`, `celebrity_2`) and aggregate on read, or put a cache in front of those keys |
+| Hotspots from increasing keys | With sequential IDs or timestamps under range-based sharding, all new writes land on the last shard | Hash the key, or use a composite key that spreads writes (e.g. a hash prefix) |
+| Resharding | Adding shards with plain hashing (`hash % N`) changes the destination of almost every key and forces a huge migration | Use consistent hashing (only a fraction of keys move) or create many logical shards upfront and map them to a few physical servers |
+| Cross-shard joins | Queries that combine data from different shards get slow or impossible | Denormalize, pick a shard key that keeps related data together (e.g. everything for a user on the same shard), or replicate small reference tables to every shard |
+| Queries without the shard key | Without the key, the router doesn't know where the data is and has to query every shard (scatter-gather) | Build global secondary indexes or lookup tables, and design the shard key around the most frequent queries |
+| Distributed transactions | Updating data across more than one shard atomically is expensive and fragile | Avoid the scenario by keeping data on the same shard, or use saga with eventual consistency (instead of two-phase commit) |
+| Unbalanced shards | Some shards grow faster than others over time (e.g. regions with more users) | Monitor each shard's size and load, split large shards, and rebalance periodically |
+
+> I'm still at the beginning: so far I've covered load balancers, caching, and sharding, and I'll update this post as I study more.
